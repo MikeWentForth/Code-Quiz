@@ -1,0 +1,15 @@
+.background {
+  background-color: darkgoldenrod;
+  font-size: 25px;
+}
+
+.js_timer {
+  text-align: center;
+}
+
+.timer {
+  background-color: aliceblue;
+  color: whitesmoke;
+  width: 100px;
+  margin: 50px auto;
+}
