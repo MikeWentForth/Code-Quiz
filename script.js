@@ -1,6 +1,6 @@
 // create a quiz class
 
-class quiz {
+class Quiz {
   constructor(questions) {
     this.score = 0;
     this.questions = questions;
@@ -29,7 +29,7 @@ class quiz {
 
 //CREATE A QUESTION CLASS
 
-class question {
+class Question {
   constructor(text, choices, answer) {
     this.text = text;
     this.choices = choices;
@@ -43,15 +43,15 @@ class question {
 //DISPLAY QUESTION
 
 function displayQuestion() {
-  if (quiz.isEnded()) {
+  if (Quiz.isEnded()) {
     showScores();
   } else {
-    let questionElement = document.getElementById("question");
-    questionElement.innerHTML = quiz.getQuestionIndex().text;
+    let questionElement = document.getElementById("Question");
+    questionElement.innerHTML = Quiz.getQuestionIndex().text;
 
     //SHOW OPTIONS
 
-    let choices = quiz.getQuestionIndex().choices;
+    let choices = Quiz.getQuestionIndex().choices;
     for (let i = 0; i < choices.length; i++) {
       let choiceElement = document.getElementById("choice" + i);
       choiceElement.innerHTML = choices[i];
@@ -70,7 +70,7 @@ function guess(id, guess) {
 
   let button = document.getElementById(id);
   button.onclick = function () {
-    quiz.guess(guess);
+    Quiz.guess(guess);
     displayQuestion();
   }
 }
@@ -79,10 +79,10 @@ function guess(id, guess) {
 
 function showProgress() {
 
-  let currentQuestionNumber = quiz.questionIndex + 1;
+  let currentQuestionNumber = Quiz.questionIndex + 1;
   let progressElement = document.getElementById("progress");
   progressElement.innerHTML =
-    `question ${currentQuestionNumber} of ${quiz.question.length}
+    `Question ${currentQuestionNumber} of ${Quiz.question.length}
     `;
 
 }
@@ -94,14 +94,14 @@ function showScores() {
 
     `
   <h1>Quiz Completed</h1>
-  <h2 id= "score">You Scored: ${quiz.score} of ${quiz.question.length}</h2>
-  <div class= "quiz-repeat">
+  <h2 id= "score">You Scored: ${Quiz.score} of ${Quiz.question.length}</h2>
+  <div class= "Quiz-repeat">
     <a href="index.html">Take Quiz Again</a>
   </div>
   
   `;
 
-  let quizElement = document.getElementById("quiz");
+  let quizElement = document.getElementById("Quiz");
   quizElement.innerHTML = quizEndHTML;
 
 }
@@ -109,24 +109,24 @@ function showScores() {
 //CREATE QUIZ QUESTIONS
 
 let questions = [
-  new question(
+  new Question(
     "This is my first question?", ["ans1", "ans2", "ans3", "ans4"], "ans2"
   ),
 
-  new question(
+  new Question(
     "This is my second question?", ["ans1", "ans2", "ans3", "ans4"], "ans3"
   ),
 
-  new question(
+  new Question(
     "This is my third question?", ["ans1", "ans2", "ans3", "ans4"], "ans1"
   ),
 
-  new question(
+  new Question(
     "This is my fourth question?", ["ans1", "ans2", "ans3", "ans4"], "ans4"
   )
 ];
 
-let quiz = new quiz(questions);
+let quiz = new Quiz(questions);
 
 //DISPLAY QUESTION
 
