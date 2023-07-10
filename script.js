@@ -134,31 +134,31 @@ displayQuestion();
 
 //ADD COUNTDOWN
 
-let time = 1;
-let quizTimeInMinutes = time * 60 * 60;
-quizTime = quizTimeInMinutes / 60;
+let time = .5;
+let quizTimeInMinutes = time * 30 * 30;
+quizTime = quizTimeInMinutes / 30;
 
 let counting = document.getElementById("count-down");
 
 function startCountdown() {
-let quizTimer = setInterval(function() {
-if (quizTimer <= 0)  {
-clearInterval(quizTimer);
-showScores();
+  let quizTimer = setInterval(function () {
+    if (quizTime <= 0) {
+      clearInterval(quizTimer);
+      showScores();
 
-} else {
-quizTime--;
-let sec = Math.floor(quizTime %60);
-let min = Math.floor(quizTime / 60) % 60;
-counting.innerHTML = `TIME: ${min} : ${sec}`;
-}
-
+    } else {
+      quizTime--;
+      let sec = Math.floor(quizTime % 30);
+      let min = Math.floor(quizTime / 30) % 30;
+      counting.innerHTML = `Time left: ${min} : ${sec}`;
+    }
 }, 1000)
 
 }
 
 startCountdown();
-  
+
+
 
 
 
