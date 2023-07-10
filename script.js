@@ -82,7 +82,7 @@ function showProgress() {
   let currentQuestionNumber = quiz.questionIndex + 1;
   let progressElement = document.getElementById("progress");
   progressElement.innerHTML =
-    `Question ${currentQuestionNumber} of ${quiz.question.length}
+    `question ${currentQuestionNumber} of ${quiz.question.length}
     `;
 
 }
