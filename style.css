@@ -37,7 +37,7 @@ img {
 }
 
 .quiz-box h1 {
-  background-color: rgb(72, 185, 220);
+  background-color: #48b9dc;
   font-size: 4rem;
   text-align: center;
   color: white;
@@ -59,7 +59,7 @@ img {
 .quiz-header #progress {
 
   color: rgb(0, 0, 0);
-  font-size: 1.6rem; 
+  font-size: 1.6rem;
   font-weight: 70;
 }
 
@@ -107,14 +107,14 @@ img {
 .btn:hover {
 
   cursor: pointer;
-  background-color: rgb(255, 174, 0);
-  color: rgb(72, 185, 220);
+  background-color: rgb(255, 254, 251);
+  color: #000000;
 
 }
 
 .btn:active {
 
-  background-color: cornflowerblue;
+  background-color: #48b9dc;
 }
 
 #score {
