@@ -43,15 +43,15 @@ class Question {
 //DISPLAY QUESTION
 
 function displayQuestion() {
-  if (Quiz.isEnded()) {
+  if (quiz.isEnded()) {
     showScores();
   } else {
-    let questionElement = document.getElementById("Question");
-    questionElement.innerHTML = Quiz.getQuestionIndex().text;
+    let questionElement = document.getElementById("question");
+    questionElement.innerHTML = quiz.getQuestionIndex().text;
 
     //SHOW OPTIONS
 
-    let choices = Quiz.getQuestionIndex().choices;
+    let choices = quiz.getQuestionIndex().choices;
     for (let i = 0; i < choices.length; i++) {
       let choiceElement = document.getElementById("choice" + i);
       choiceElement.innerHTML = choices[i];
@@ -70,7 +70,7 @@ function guess(id, guess) {
 
   let button = document.getElementById(id);
   button.onclick = function () {
-    Quiz.guess(guess);
+    quiz.guess(guess);
     displayQuestion();
   }
 }
@@ -79,10 +79,10 @@ function guess(id, guess) {
 
 function showProgress() {
 
-  let currentQuestionNumber = Quiz.questionIndex + 1;
+  let currentQuestionNumber = quiz.questionIndex + 1;
   let progressElement = document.getElementById("progress");
   progressElement.innerHTML =
-    `Question ${currentQuestionNumber} of ${Quiz.question.length}
+    `Question ${currentQuestionNumber} of ${quiz.question.length}
     `;
 
 }
@@ -94,14 +94,14 @@ function showScores() {
 
     `
   <h1>Quiz Completed</h1>
-  <h2 id= "score">You Scored: ${Quiz.score} of ${Quiz.question.length}</h2>
-  <div class= "Quiz-repeat">
+  <h2 id= "score">You Scored: ${quiz.score} of ${quiz.question.length}</h2>
+  <div class= "quiz-repeat">
     <a href="index.html">Take Quiz Again</a>
   </div>
   
   `;
 
-  let quizElement = document.getElementById("Quiz");
+  let quizElement = document.getElementById("quiz");
   quizElement.innerHTML = quizEndHTML;
 
 }
