@@ -4,40 +4,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Survey</title>
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div id="welcome">
+  <div class="container">
+    <div class="quiz-box">
+      <div id="quiz">
+        <h1>JavaScript Quiz App</h1>
+        <div class="quiz-header">
+          <p id="progress">Question x of y</p>
+          <p id="count-down">10</p>
+        </div>
+        <p id="question">What is your name?</p>
 
-    <h1>Code Quiz</h1>
-  </div>
+        <div class="buttons">
+          <button class="btn" id="btn0">
+            A. <span id="choice0"></span>
+          </button>
 
-  <div class="timer">
-    <span class="timer__part timer__part--minutes">00</span>
-    <span class="timer__part">:</span>
-    <span class="timer__part timer__part--secomnds">00</span>
+          <button class="btn" id="btn1">
+            B. <span id="choice1"></span>
+          </button>
 
-    <button type="button" class="timer__btn">
-      Start
-    </button>
+          <button class="btn" id="btn2">
+            C. <span id="choice2"></span>
+          </button>
 
-  </div>
+          <button class="btn" id="btn3">
+            D. <span id="choice3"></span>
+          </button>
+        </div>
+        <hr>
+        <footer>
+          <p>Design by Mike Wallace.</p>
+        </footer>
 
-  <div id="questions-container">
-    <h2 id="question-title"></h2>
-    <div class="choices">
-      <button id="choice-1"></button>
-      <button id="choice-2"></button>
-      <button id="choice-3"></button>
-      <button id="choice-4"></button>
+      </div>
     </div>
+
   </div>
 
 
 
   <script src="script.js"></script>
-
 </body>
 
 </html>
