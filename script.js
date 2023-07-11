@@ -110,19 +110,19 @@ function showScores() {
 
 let questions = [
   new Question(
-    "This is my first question?", ["ans1", "ans2", "ans3", "ans4"], "ans2"
+    "What does HTML stand for?", ["Henry Thought Marriage Lasted", "Hypertext Markup Language", "Hyper Tension Muscular Lymphoma", "Harold Mostly Taught Linguistics"], "Hypertext Markup Language"
   ),
 
   new Question(
-    "This is my second question?", ["ans1", "ans2", "ans3", "ans4"], "ans3"
+    "What would you use to Style your HTML?", ["HTML", "JavaScript", "CSS", "Chat GPT"], "CSS"
   ),
 
   new Question(
-    "This is my third question?", ["ans1", "ans2", "ans3", "ans4"], "ans1"
+    "Which text element is the largest in HTML format?", ["h1", "h2", "h3", "h4"], "h1"
   ),
 
   new Question(
-    "This is my fourth question?", ["ans1", "ans2", "ans3", "ans4"], "ans4"
+    "What is the most common way to define a function in JavaScript?", ["Parameter Bracket", "Parenthesis", "Using Commas", "Function Declaration"], "Function Declaration"
   )
 ];
 
@@ -135,8 +135,8 @@ displayQuestion();
 //ADD COUNTDOWN
 
 let time = .5;
-let quizTimeInMinutes = time * 30 * 30;
-quizTime = quizTimeInMinutes / 30;
+let quizTimeInMinutes = time * 60 * 60;
+quizTime = quizTimeInMinutes / 60;
 
 let counting = document.getElementById("count-down");
 
