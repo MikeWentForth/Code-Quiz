@@ -110,7 +110,7 @@ function showScores() {
 
 let questions = [
   new Question(
-    "What does HTML stand for?", ["Henry Thought Marriage Lasted", "Hypertext Markup Language", "Hyper Tension Muscular Lymphoma", "Harold Mostly Taught Linguistics"], "Hypertext Markup Language"
+    "What does HTML stand for?", ["Henry Thought Marriage Lasted", "Hypertext Markup Language", "Hyper Tension Muscular Lymphoma", "Harold Taught Mostly Linguistics"], "Hypertext Markup Language"
   ),
 
   new Question(
