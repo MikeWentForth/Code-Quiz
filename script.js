@@ -96,15 +96,44 @@ function showScores() {
   <h1>Quiz Completed</h1>
   <h2 id= "score">You Scored: ${quiz.score} of ${quiz.questions.length}</h2>
   <div class= "quiz-repeat">
-    <a href="index.html">Take Quiz Again</a>
-  </div>
+    <button id= "lastButton">Submit</button>
+    
+    </div>
+  <input type= "text" id="entry-box"/>
   
   `;
 
+
   let quizElement = document.getElementById("quiz");
   quizElement.innerHTML = quizEndHTML;
+  let submitButton = document.getElementById("lastButton");
+  submitButton.addEventListener("click", savedScore)
+}
+
+
+function savedScore() {
+  let entryBox = document.getElementById("entry-box");
+
+
+  console.log(entryBox.value);
+  localStorage.getItem('entryBox');
+
 
 }
+
+// var userInitials = localStorage.getItem("userInitials");
+
+
+
+
+
+
+
+
+
+
+
+
 
 //CREATE QUIZ QUESTIONS
 
@@ -152,7 +181,11 @@ function startCountdown() {
       let min = Math.floor(quizTime / 30) % 30;
       counting.innerHTML = `Time left: ${min} : ${sec}`;
     }
-}, 1000)
+  }, 1000)
+
+
+
+
 
 }
 
