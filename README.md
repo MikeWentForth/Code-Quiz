@@ -2,7 +2,7 @@
 
 ## Introduction ##
 
-This is a short timed code quiz to test your basic coding knowlege.  
+This is a short timed code quiz to test your basic coding knowledge.  
 
 ## Technologies used ##
 
