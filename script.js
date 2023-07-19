@@ -95,12 +95,12 @@ function showScores() {
     `
   <h1>Quiz Completed</h1>
   <h2 id= "score">You Scored: ${quiz.score} of ${quiz.questions.length}</h2>
-  <div class= "quiz-repeat">
-    <button id= "lastButton">Submit</button>
-    
-    </div>
-  <input type= "text" id="entry-box"/>
   
+  <div class="center">
+  <input type= "text" id="entry-box"/>
+  <button id= "lastButton">Submit</button>
+  </div>
+
   `;
 
 
@@ -113,27 +113,70 @@ function showScores() {
 
 function savedScore() {
   let entryBox = document.getElementById("entry-box");
-
-
   console.log(entryBox.value);
-  
-  // what data do we want to keep (?) --> structuing our dataset
-    // we want to store the KEY and VALUE of each USER (object [{ username: scoreValue }] ) 
 
-/*  var newData = {
-    username: entryBox.value,
-    score: 75
-  } */
+  // Load the previous high scores from localstorage
+
+  let temp = localStorage.getItem("scores");
+  let scores = JSON.parse(temp);
+  // If scores is null here, initialize as an empty array.
+  if (scores == null) scores = [];
+
+  // Add the new score information
+  // Data structure is an array of custom objects: 
+  // [{ initials: entryBox.value, score: 75 }, { ... }, ...]
+  let newScoreObject = { initials: entryBox.value.trim(), score: quiz.score };
+  scores.push(newScoreObject);
+
+  // Sort by score, highest first
+  scores.sort(function (a, b) {
+    return b.score - a.score;
+  });
+
+  // Keep/show the top 5?
+  scores = scores.slice(0, 5);
+
+  // Save the new dataset back to localstorage
+  localStorage.setItem("scores", JSON.stringify(scores));
+
+  // Display the scoreboard on screen
+  // Create the HTML to display
+  let html = "<h1>High Scores</h1>\n";
+
+  // Loop through the scores array: for (let varname of collection) { ... }
+  for (let sc of scores) {
+    // Create html to display the initials and score for each object in the array
+    // sc = {initials: "MW", score: 99}
+
+    html += `${sc.initials} ${sc.score}<br>\n`;
+
+  }
+  html += '<button onclick="startQuiz();">Play Again</button><br>\n';
+  // Update innerHTML of div with class highscores (querySelector)
+  document.getElementById("quiz").innerHTML = html;
+
+  // Optional button to clear scores
+
+
+
+
+  // what data do we want to keep (?) --> structuing our dataset
+  // we want to store the KEY and VALUE of each USER (object [{ username: scoreValue }] ) 
+
+  /*  var newData = {
+      username: entryBox.value,
+      score: 75
+    } */
 
   // Where are we storing the data (?) --> PERSISTING DATA 
-    // localStorage (Browser Storage)  --> Broswer only understands STRING type data (JSON)
-    // JSON  --> Stringify / Parse (data conversion)
-    
- // -->  localStorage.setItem("highscores", "[]")   // --> { key: value }
+  // localStorage (Browser Storage)  --> Broswer only understands STRING type data (JSON)
+  // JSON  --> Stringify / Parse (data conversion)
 
-  
+  // -->  localStorage.setItem("highscores", "[]")   // --> { key: value }
+
+
   // Where and what are we displaying (?)
-    // on the DOM (in a div or a new HTML page)
+  // on the DOM (in a div or a new HTML page)
 }
 
 // var userInitials = ["userInitials", "savedScore"];
@@ -184,12 +227,6 @@ localStorage.setItem("highscores", JSON.stringify(convertedData) )
 
 
 
-
-
-
-
-
-
 //CREATE QUIZ QUESTIONS
 
 let questions = [
@@ -210,77 +247,43 @@ let questions = [
   )
 ];
 
-let quiz = new Quiz(questions);
-
-//DISPLAY QUESTION
-
-displayQuestion();
-
-//ADD COUNTDOWN
-
-let time = .5;
-let quizTimeInMinutes = time * 60 * 60;
-quizTime = quizTimeInMinutes / 60;
-
-let counting = document.getElementById("count-down");
+let quiz;
+let time;
+let quizTimeInMinutes;
+let quizTime;
 
 function startCountdown() {
   let quizTimer = setInterval(function () {
     if (quizTime <= 0) {
       clearInterval(quizTimer);
       showScores();
-
     } else {
       quizTime--;
       let sec = Math.floor(quizTime % 30);
       let min = Math.floor(quizTime / 30) % 30;
-      counting.innerHTML = `Time left: ${min} : ${sec}`;
+      document.getElementById("count-down").innerHTML = `Time left: ${min} : ${sec}`;
     }
   }, 1000)
 
+}
 
+function startQuiz() {
 
+  // Reset the starting HTML
+  document.getElementById("quiz").innerHTML = startingHTML;
 
+  quiz = new Quiz(questions);
+
+  //DISPLAY QUESTION
+  displayQuestion();
+  
+  //ADD COUNTDOWN
+  time = .5;
+  quizTimeInMinutes = time * 60 * 60;
+  quizTime = quizTimeInMinutes / 60;
+  startCountdown();
 
 }
 
-startCountdown();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let startingHTML = document.getElementById("quiz").innerHTML;
+startQuiz();
